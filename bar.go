@@ -1,6 +1,7 @@
 package bar
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -31,7 +32,7 @@ func (*valMsg) ProtoMessage()             {}
 func (*valMsg) XXX_WellKnownType() string { return "BytesValue" }
 func (m *valMsg) Reset()                  { *m = valMsg{} }
 func (m *valMsg) String() string {
-	return ""
+	return fmt.Sprintf("%x", m.v) // not compatible w/ pb oct
 }
 func (m *valMsg) Unmarshal(b []byte) error {
 	m.v = append(m.v, b...)
