@@ -18,7 +18,7 @@ func (*ar) Resolve(typeUrl string) (proto.Message, error) {
 	}
 	mt := proto.MessageType(mname)
 	if mt == nil {
-		return (*valMsg)(nil), nil
+		return new(valMsg), nil
 	}
 	return reflect.New(mt.Elem()).Interface().(proto.Message), nil
 }
