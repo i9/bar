@@ -25,16 +25,16 @@ func (*ar) Resolve(typeUrl string) (proto.Message, error) {
 }
 
 type valMsg struct {
-	v []byte
+	V []byte
 }
 
 func (*valMsg) ProtoMessage()             {}
 func (*valMsg) XXX_WellKnownType() string { return "BytesValue" }
 func (m *valMsg) Reset()                  { *m = valMsg{} }
 func (m *valMsg) String() string {
-	return fmt.Sprintf("%x", m.v) // not compatible w/ pb oct
+	return fmt.Sprintf("%x", m.V) // not compatible w/ pb oct
 }
 func (m *valMsg) Unmarshal(b []byte) error {
-	m.v = append([]byte(nil), b...)
+	m.V = append([]byte(nil), b...)
 	return nil
 }
