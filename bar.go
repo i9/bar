@@ -35,6 +35,6 @@ func (m *valMsg) String() string {
 	return fmt.Sprintf("%x", m.v) // not compatible w/ pb oct
 }
 func (m *valMsg) Unmarshal(b []byte) error {
-	m.v = append(m.v, b...)
+	m.v = append([]byte(nil), b...)
 	return nil
 }
